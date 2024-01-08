@@ -39,7 +39,7 @@ struct ContentView: View {
                     
                 }
                 .buttonStyle(TitleScreenButton())
-                Button("Learn") {
+                Button("Learning") {
                     
                 }
                 .buttonStyle(TitleScreenButton())

@@ -10,7 +10,9 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    //@State private var showSettings: Bool = false
+    @Binding var isShowing: Bool
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
@@ -18,44 +20,73 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Ready Test")
-                    .font(.system(size: 45))
-                    .fontWeight(.bold)
-                    .padding([.top], 37)
+            ZStack {
+                /*
+                 Main body of home screen
+                 */
+                VStack {
+                    Text("Ready Test")
+                        .font(.system(size: 45))
+                        .fontWeight(.bold)
+                        .padding([.top], 70)
+                      
+           
+                    Image(systemName: "square.and.pencil")
+                        .font(.system(size: 150))
+                        .padding([.bottom], 50)
+                        
+                        
+                    NavigationLink(destination: PracticeView()) {
+                        Text("Practice")
+                    }.buttonStyle(TitleScreenButton())
+                    
+                    
+                    Button("Test") {
+                        
+                    }
+                    .buttonStyle(TitleScreenButton())
+                    Button("Learning") {
+                        
+                    }
+                    .buttonStyle(TitleScreenButton())
+                    Spacer()
+                }.zIndex(1)
+                /*
+                 nav bar
+                 */
+                
+                /*
+                 side menu
+                 */
+                if (isShowing) {
+                    HStack {
+                        Spacer()
+                        Rectangle()
+                            .fill(.white)
+                            .frame(width: (UIScreen.main.bounds.width/2), height: UIScreen.main.bounds.height, alignment: .trailing)
+                            .ignoresSafeArea()
+                            .shadow(color: .gray, radius: 20)
+                        
                   
-       
-                Image(systemName: "square.and.pencil")
-                    .font(.system(size: 150))
-                    .padding([.bottom], 50)
-                    
-                    
-                NavigationLink(destination: PracticeView()) {
-                    Text("Practice")
-                }.buttonStyle(TitleScreenButton())
-                
-                
-                Button("Test") {
-                    
+                    }.zIndex(2)
                 }
-                .buttonStyle(TitleScreenButton())
-                Button("Learning") {
-                    
-                }
-                .buttonStyle(TitleScreenButton())
-                Spacer()
-            }
+            }.navigationBarTitleDisplayMode(.inline)
+                .toolbar(content: {
+                           ToolbarItem(placement: .navigationBarTrailing) {
+                               Button {
+                                   print("hi")
+                                   isShowing.toggle()
+                               } label: {
+                                   Image(systemName: "line.3.horizontal")
+                               }.buttonStyle(.plain)
+                               
+                           }
+                }).zIndex(3)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                .animation(.easeInOut, value: isShowing)
+        
             
-            
-           // .navigationTitle("Ready Test").font(.largeTitle)
-            .navigationBarTitleDisplayMode(.inline)
-               .toolbar(content: {
-                          ToolbarItem(placement: .navigationBarTrailing) {
-                              Image(systemName: "line.3.horizontal")
-                          }
-                      })
-               
-        }
+        }.accentColor(.black)
 
 //        NavigationView {
 //            Button(action: addItem) {
@@ -87,36 +118,36 @@ struct ContentView: View {
 //        }
     }
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
+//    private func addItem() {
+//        withAnimation {
+//            let newItem = Item(context: viewContext)
+//            newItem.timestamp = Date()
+//
+//            do {
+//                try viewContext.save()
+//            } catch {
+//                // Replace this implementation with code to handle the error appropriately.
+//                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+//                let nsError = error as NSError
+//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+//            }
+//        }
+//    }
+//
+//    private func deleteItems(offsets: IndexSet) {
+//        withAnimation {
+//            offsets.map { items[$0] }.forEach(viewContext.delete)
+//
+//            do {
+//                try viewContext.save()
+//            } catch {
+//                // Replace this implementation with code to handle the error appropriately.
+//                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+//                let nsError = error as NSError
+//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+//            }
+//        }
+//    }
 }
 
 struct TitleScreenButton: ButtonStyle {
@@ -147,8 +178,24 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
+struct container : View {
+    @State private var value = false
+    var body: some View {
+        ContentView(isShowing: $value)
+    }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        container().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
+}
+
+extension UINavigationController {
+
+  open override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    navigationBar.topItem?.backButtonDisplayMode = .minimal
+  }
+
 }

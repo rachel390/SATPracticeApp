@@ -13,7 +13,7 @@ struct SATAPPApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            container()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

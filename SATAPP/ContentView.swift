@@ -18,28 +18,73 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
+            VStack {
+                Text("Ready Test")
+                    .font(.system(size: 45))
+                    .fontWeight(.bold)
+                    .padding([.top], 37)
+                  
+       
+                Image(systemName: "square.and.pencil")
+                    .font(.system(size: 150))
+                    .padding([.bottom], 50)
+                    
+                    
+                NavigationLink(destination: PracticeView()) {
+                    Text("Practice")
+                }.buttonStyle(TitleScreenButton())
+                
+                
+                Button("Test") {
+                    
                 }
-                .onDelete(perform: deleteItems)
+                .buttonStyle(TitleScreenButton())
+                Button("Learn") {
+                    
+                }
+                .buttonStyle(TitleScreenButton())
+                Spacer()
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
+            
+            
+           // .navigationTitle("Ready Test").font(.largeTitle)
+            .navigationBarTitleDisplayMode(.inline)
+               .toolbar(content: {
+                          ToolbarItem(placement: .navigationBarTrailing) {
+                              Image(systemName: "line.3.horizontal")
+                          }
+                      })
+               
         }
+
+//        NavigationView {
+//            Button(action: addItem) {
+//                Label("Add Item", systemImage: "plus")
+//              }
+//                .navigationTitle("SwiftUI")
+//                .navigationBarTitleDisplayMode(.inline)
+////            List {
+////                ForEach(items) { item in
+////                    NavigationLink {
+////                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+////                    } label: {
+////                        Text(item.timestamp!, formatter: itemFormatter)
+////                    }
+////                }
+////                .onDelete(perform: deleteItems)
+////            }
+////            .toolbar {
+////                ToolbarItem(placement: .navigationBarTrailing) {
+////                    EditButton()
+////                }
+////                ToolbarItem {
+////                    Button(action: addItem) {
+////                        Label("Add Item", systemImage: "plus")
+////                    }
+////                }
+////            }
+////            Text("Select an item")
+//        }
     }
 
     private func addItem() {
@@ -71,6 +116,27 @@ struct ContentView: View {
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
+    }
+}
+
+struct TitleScreenButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .frame(width: 310, height: 50)
+            .font(.system(size: 22))
+            .background(Color(red: 1, green: 1, blue: 1))
+            .cornerRadius(6)
+            .foregroundStyle(.black)
+            //.shadow(color: (Color(UIColor.lightGray)), radius: 15)
+            .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(.gray, lineWidth: 0.75)
+                        
+                )
+            .scaleEffect(configuration.isPressed ? 1.05 : 1)
+            .animation(.easeOut(duration: 0.3), value: configuration.isPressed)
+            .padding([.top, .bottom], 6)
     }
 }
 

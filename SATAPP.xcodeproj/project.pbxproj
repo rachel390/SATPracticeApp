@@ -16,6 +16,7 @@
 		AD43B1172B4B5966006E6380 /* SATAPPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43B1162B4B5966006E6380 /* SATAPPTests.swift */; };
 		AD43B1212B4B5966006E6380 /* SATAPPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43B1202B4B5966006E6380 /* SATAPPUITests.swift */; };
 		AD43B1232B4B5966006E6380 /* SATAPPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43B1222B4B5966006E6380 /* SATAPPUITestsLaunchTests.swift */; };
+		AD43B1302B4B6BC3006E6380 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43B12F2B4B6BC3006E6380 /* PracticeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		AD43B11C2B4B5966006E6380 /* SATAPPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SATAPPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD43B1202B4B5966006E6380 /* SATAPPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SATAPPUITests.swift; sourceTree = "<group>"; };
 		AD43B1222B4B5966006E6380 /* SATAPPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SATAPPUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AD43B12F2B4B6BC3006E6380 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				AD43B1002B4B5964006E6380 /* SATAPPApp.swift */,
 				AD43B1022B4B5964006E6380 /* ContentView.swift */,
+				AD43B12F2B4B6BC3006E6380 /* PracticeView.swift */,
 				AD43B1042B4B5966006E6380 /* Assets.xcassets */,
 				AD43B1092B4B5966006E6380 /* Persistence.swift */,
 				AD43B10B2B4B5966006E6380 /* SATAPP.xcdatamodeld */,
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD43B10D2B4B5966006E6380 /* SATAPP.xcdatamodeld in Sources */,
+				AD43B1302B4B6BC3006E6380 /* PracticeView.swift in Sources */,
 				AD43B10A2B4B5966006E6380 /* Persistence.swift in Sources */,
 				AD43B1032B4B5964006E6380 /* ContentView.swift in Sources */,
 				AD43B1012B4B5964006E6380 /* SATAPPApp.swift in Sources */,

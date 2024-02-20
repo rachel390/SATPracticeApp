@@ -45,8 +45,8 @@ struct ContentView: View {
                         
                     }
                     .buttonStyle(TitleScreenButton())
-                    Button("Learning") {
-                        
+                    NavigationLink(destination: LearningLanding()) {
+                        Text("Learning")
                     }
                     .buttonStyle(TitleScreenButton())
                     Spacer()
@@ -59,16 +59,7 @@ struct ContentView: View {
                  side menu
                  */
                 if (isShowing) {
-                    HStack {
-                        Spacer()
-                        Rectangle()
-                            .fill(.white)
-                            .frame(width: (UIScreen.main.bounds.width/2), height: UIScreen.main.bounds.height, alignment: .trailing)
-                            .ignoresSafeArea()
-                            .shadow(color: .gray, radius: 20)
-                        
-                  
-                    }.zIndex(2)
+                    HomeSideMenu(presentSideMenu: $isShowing).zIndex(2)
                 }
             }.navigationBarTitleDisplayMode(.inline)
                 .toolbar(content: {

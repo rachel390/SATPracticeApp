@@ -17,7 +17,9 @@
 		AD43B1212B4B5966006E6380 /* SATAPPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43B1202B4B5966006E6380 /* SATAPPUITests.swift */; };
 		AD43B1232B4B5966006E6380 /* SATAPPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43B1222B4B5966006E6380 /* SATAPPUITestsLaunchTests.swift */; };
 		AD43B1302B4B6BC3006E6380 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43B12F2B4B6BC3006E6380 /* PracticeView.swift */; };
+		AD7386072B8434C3005851C7 /* LearningLanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7386062B8434C3005851C7 /* LearningLanding.swift */; };
 		ADE4B8DF2B4C802B00E1266B /* HomeSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4B8DE2B4C802B00E1266B /* HomeSideMenu.swift */; };
+		ADE4B8E12B4CA86400E1266B /* PracticeQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4B8E02B4CA86400E1266B /* PracticeQuestionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +53,9 @@
 		AD43B1202B4B5966006E6380 /* SATAPPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SATAPPUITests.swift; sourceTree = "<group>"; };
 		AD43B1222B4B5966006E6380 /* SATAPPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SATAPPUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AD43B12F2B4B6BC3006E6380 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
+		AD7386062B8434C3005851C7 /* LearningLanding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningLanding.swift; sourceTree = "<group>"; };
 		ADE4B8DE2B4C802B00E1266B /* HomeSideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSideMenu.swift; sourceTree = "<group>"; };
+		ADE4B8E02B4CA86400E1266B /* PracticeQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeQuestionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +106,12 @@
 		AD43B0FF2B4B5964006E6380 /* SATAPP */ = {
 			isa = PBXGroup;
 			children = (
+				AD7386052B84349F005851C7 /* LearningTab */,
 				AD43B1002B4B5964006E6380 /* SATAPPApp.swift */,
 				AD43B1022B4B5964006E6380 /* ContentView.swift */,
 				ADE4B8DE2B4C802B00E1266B /* HomeSideMenu.swift */,
 				AD43B12F2B4B6BC3006E6380 /* PracticeView.swift */,
+				ADE4B8E02B4CA86400E1266B /* PracticeQuestionView.swift */,
 				AD43B1042B4B5966006E6380 /* Assets.xcassets */,
 				AD43B1092B4B5966006E6380 /* Persistence.swift */,
 				AD43B10B2B4B5966006E6380 /* SATAPP.xcdatamodeld */,
@@ -137,6 +143,14 @@
 				AD43B1222B4B5966006E6380 /* SATAPPUITestsLaunchTests.swift */,
 			);
 			path = SATAPPUITests;
+			sourceTree = "<group>";
+		};
+		AD7386052B84349F005851C7 /* LearningTab */ = {
+			isa = PBXGroup;
+			children = (
+				AD7386062B8434C3005851C7 /* LearningLanding.swift */,
+			);
+			path = LearningTab;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +288,8 @@
 				AD43B10A2B4B5966006E6380 /* Persistence.swift in Sources */,
 				AD43B1032B4B5964006E6380 /* ContentView.swift in Sources */,
 				ADE4B8DF2B4C802B00E1266B /* HomeSideMenu.swift in Sources */,
+				AD7386072B8434C3005851C7 /* LearningLanding.swift in Sources */,
+				ADE4B8E12B4CA86400E1266B /* PracticeQuestionView.swift in Sources */,
 				AD43B1012B4B5964006E6380 /* SATAPPApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

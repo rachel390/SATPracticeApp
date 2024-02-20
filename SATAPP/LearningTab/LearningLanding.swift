@@ -8,22 +8,21 @@
 import SwiftUI
 
 struct LearningLanding: View {
-    private var lessonTitle = "Learning"
-    private var lessonSubtitle = "Read Below to Learn more about the Structure of the SAT"
-    @State private var image: [Image] = []
+    @ObservedObject var datas = LessonModel()
+   
     var body: some View {
         VStack {
-            Text(lessonTitle).font(.largeTitle)
+            Text(datas.lessons[0].title).font(.largeTitle)
                 .padding(.bottom, 10)
 //            Text("Click the side panel to access in depth lessons and practice for topics on the SAT")
 //                .frame(width: 300)
 //                .padding(.bottom, 10)
-            Text(lessonSubtitle)
+            Text(datas.lessons[0].subtitle)
                 .frame(width: 300, alignment: .center)
                 .padding(.bottom, 10)
             Spacer()
         }.frame(alignment: .center)
-        
+    
         
     }
 }

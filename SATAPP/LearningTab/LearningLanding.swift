@@ -66,18 +66,23 @@ struct LearningLanding: View {
         ZStack {
             VStack {
                 Text(datas.lessons[page].title)
+                    .foregroundColor(.black)
                     .font(.largeTitle)
                     .padding(.top, 30)
                     .padding(.bottom, 10)
+                    
                 Text(datas.lessons[page].subtitle)
+                    .foregroundColor(.black)
                     .frame(width: 300, alignment: .center)
                     .padding(.bottom, 10)
+                    
                 Spacer()
                 Button(action: {
                     nextPage()
                     print(datas.lessons.count)
                       }) {
                 Text("Next")
+                          .foregroundColor(.black)
                           .font(.title)
                       }
                       .padding(.bottom, 40)
@@ -90,7 +95,9 @@ struct LearningLanding: View {
                 sideBar.zIndex(2)
             }
             
-        }.frame(alignment: .center)
+        }
+        .frame(width: screenWidth, height: UIScreen.main.bounds.height, alignment: .center)
+        .background(.white)
         
         /*
          Tool bar
@@ -102,6 +109,7 @@ struct LearningLanding: View {
                                    isShowing.toggle()
                                } label: {
                                    Image(systemName: "line.3.horizontal")
+                                       .foregroundColor(.black)
                                }.buttonStyle(.plain)
                                
                            }

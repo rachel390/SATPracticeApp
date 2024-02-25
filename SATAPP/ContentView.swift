@@ -10,7 +10,6 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    //@State private var showSettings: Bool = false
     @Binding var isShowing: Bool
     
     @FetchRequest(
@@ -29,16 +28,17 @@ struct ContentView: View {
                         .font(.system(size: 45))
                         .fontWeight(.bold)
                         .padding([.top], 70)
-                      
-           
+                        .foregroundStyle(.black)
+
                     Image(systemName: "square.and.pencil")
                         .font(.system(size: 150))
                         .padding([.bottom], 50)
-                        
+                        .foregroundStyle(.black)
                         
                     NavigationLink(destination: PracticeView()) {
                         Text("Practice")
-                    }.buttonStyle(TitleScreenButton())
+                    }
+                    .buttonStyle(TitleScreenButton())
                     
                     
                     Button("Test") {
@@ -50,7 +50,10 @@ struct ContentView: View {
                     }
                     .buttonStyle(TitleScreenButton())
                     Spacer()
-                }.zIndex(1)
+                }
+                .background(.white)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                .zIndex(1)
                 /*
                  side menu
                  */
@@ -64,19 +67,23 @@ struct ContentView: View {
                 .toolbar(content: {
                            ToolbarItem(placement: .navigationBarTrailing) {
                                Button {
-                                   print("hi")
                                    isShowing.toggle()
                                } label: {
                                    Image(systemName: "line.3.horizontal")
+                                       .foregroundStyle(.black)
                                }.buttonStyle(.plain)
                                
                            }
                 }).zIndex(3)
+                .background(.white)
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 .animation(.easeInOut, value: isShowing)
         
             
-        }.accentColor(.black)
+        }
+        .background(.white)
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        
 
 //        NavigationView {
 //            Button(action: addItem) {

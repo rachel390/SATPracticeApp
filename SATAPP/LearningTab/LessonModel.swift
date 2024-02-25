@@ -10,11 +10,28 @@ import Combine
 
 class LessonModel: ObservableObject {
     @Published var lessons = [Lesson]()
-    @Published var indices = [String: Int]()
+    @Published var lessonIndices = [String: Int]()
+    @Published var showingSubtopics = [String: Bool]()
     
         
     init(){
         loadData()
+    }
+    
+    func toggleShowingSubtopic(lesson: String) {
+        if showingSubtopics[lesson] != nil && showingSubtopics[lesson] == true {
+            showingSubtopics[lesson] = false
+        } else if showingSubtopics[lesson] != nil && showingSubtopics[lesson] == false {
+            showingSubtopics[lesson] = true
+        }
+    }
+    
+    func resetShowingSubtopics() {
+        for lesson in self.lessons {
+            if (lesson.subtopics.count != 0) {
+                showingSubtopics[lesson.title] = false
+            }
+        }
     }
     
     
@@ -29,7 +46,17 @@ class LessonModel: ObservableObject {
         let lessons = try? JSONDecoder().decode([Lesson].self, from: data!)
         self.lessons = lessons!
         
-        //TODO: populate hashtable with indices upon init for easy grabbing of data 
+        //Populating hashtable with indices
+        
+        var temp = 0
+        
+        for lesson in self.lessons {
+            lessonIndices[lesson.title] = temp
+            if (lesson.subtopics.count != 0) {
+                showingSubtopics[lesson.title] = false
+            }
+            temp += 1
+        }
         
     }
     

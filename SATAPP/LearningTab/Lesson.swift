@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Lesson: Identifiable, Decodable {
+struct Lesson: Identifiable, Decodable, Hashable {
     enum CodingKeys: CodingKey {
            case title
            case subtitle

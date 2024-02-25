@@ -13,14 +13,51 @@ struct LearningLanding: View {
     @ObservedObject var datas = LessonModel()
     private let c = 5
     @State private var isShowing = false
+    @State private var showSubtopics = false
     @State private var page = 0
     private let screenWidth = UIScreen.main.bounds.width
     private let sideMenuWidth = UIScreen.main.bounds.width/1.3
+    
+    func retreivePage(lesson: String) {
+        if let index = datas.lessonIndices[lesson] {
+            if (index <= c) {
+                self.page = index
+                isShowing = false
+            }
+            
+        }
+    }
+    
+    @ViewBuilder
+    func fetchSubtopicsView(lesson: Lesson) -> some View {
+        if datas.showingSubtopics[lesson.title] != nil && datas.showingSubtopics[lesson.title] == true {
+                    VStack {
+                        ForEach(lesson.subtopics, id:\.self) { subtopic in
+                            Button(action: {
+                                retreivePage(lesson: subtopic)
+                           }) {
+            
+                             Text("\(subtopic)")
+                           }
+                           .foregroundColor(.black)
+                           .lineLimit(1)
+                           .frame(width: (screenWidth/1.5 - 5), alignment: .leading)
+                           .padding(.bottom, 1)
+                           .padding(.leading, 5)
+                        }
+                    }
+        }
+    }
+    
+    struct PopulatedSubtopics: View {
+        var body: some View {
+             navigationBarTitle("Populated State")
+        }
+    }
 
 
     
     func nextPage() {
-        print(datas.lessons.count)
         if (self.page < c) {
             self.page = self.page + 1
         } else {
@@ -39,20 +76,47 @@ struct LearningLanding: View {
                         .edgesIgnoringSafeArea(.top)
                         .shadow(color: .gray, radius: 20)
                     VStack {
-                        ForEach(datas.lessons) { lesson in
-                            Button(action: {
-                                
-                            }) {
-                              Text("\(lesson.title)")
+                        ForEach(datas.lessons, id: \.self) { lesson in
+                            if (lesson.subtopics.count != 0) {
+                                HStack {
+                                    Button(action: {
+                                       retreivePage(lesson: lesson.title)
+                                   }) {
+       
+                                     Text("\(lesson.title)")
+                                           .foregroundColor(.black)
+                                   }
+                                   .lineLimit(1)
+                                    Spacer()
+                                    Button(action: {
+                                        datas.toggleShowingSubtopic(lesson: lesson.title)
+                                   }) {
+       
+                                       Image(systemName: "chevron.down")
+                                   }
+                                }.frame(width: (screenWidth/1.5 - 5), alignment: .leading)
+                                    .padding(.bottom, 1)
+                                    .padding(.leading, 1)
+                                fetchSubtopicsView(lesson: lesson)
+                            } else {
+                                Button(action: {
+                                   retreivePage(lesson: lesson.title)
+                               }) {
+   
+                                 Text("\(lesson.title)")
+                                       .foregroundColor(.black)
+                               }
+                               .lineLimit(1)
+                               .frame(width: (screenWidth/1.5 - 5), alignment: .leading)
+                               .padding(.bottom, 1)
+                               .padding(.leading, 1)
                             }
-                            .lineLimit(1)
-                            .frame(width: (screenWidth/1.5 - 5), alignment: .leading)
-                            .padding(.bottom, 1)
-                            .padding(.leading, 1)
+                            Divider()
+                            
                         }
                         Spacer()
                     }
-                    .padding(.top, 40)
+                    .padding(.top, 70)
                     .frame(width: (sideMenuWidth))
                         
                 }
@@ -68,7 +132,7 @@ struct LearningLanding: View {
                 Text(datas.lessons[page].title)
                     .foregroundColor(.black)
                     .font(.largeTitle)
-                    .padding(.top, 30)
+                    .padding(.top, 60)
                     .padding(.bottom, 10)
                     
                 Text(datas.lessons[page].subtitle)
@@ -85,7 +149,7 @@ struct LearningLanding: View {
                           .foregroundColor(.black)
                           .font(.title)
                       }
-                      .padding(.bottom, 40)
+                      .padding(.bottom, 70)
                
                 
             }
@@ -98,6 +162,15 @@ struct LearningLanding: View {
         }
         .frame(width: screenWidth, height: UIScreen.main.bounds.height, alignment: .center)
         .background(.white)
+        .gesture(DragGesture(minimumDistance: 0).onEnded({ (value) in
+            if (isShowing) {
+                if (value.location.x < (screenWidth - sideMenuWidth)) {
+                    isShowing = false
+                    datas.resetShowingSubtopics()
+                }
+                
+            }
+            }))
         
         /*
          Tool bar

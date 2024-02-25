@@ -18,22 +18,30 @@ struct PracticeView: View {
             ZStack {
                 VStack {
                     Text("Choose Settings")
+                        .foregroundColor(.black)
                         .font(.system(size: 35))
                         .fontWeight(.semibold)
                         .padding(.top, 30)
+                   
                     ZStack {
                         Picker("Choose Difficulty", selection: $difficuly) {
                             ForEach(difficulties, id: \.self) {
                                 Text($0)
                                     .font(.system(size: 19))
+                                    .foregroundColor(.black)
                             }
-                        }.padding(.top, 80)
-                            .pickerStyle(.wheel)
-                            .frame(width: UIScreen.main.bounds.width - 50, height: 80, alignment: .center)
+                        }
+                        .foregroundColor(.black)
+                        .padding(.top, 80)
+                        .pickerStyle(.wheel)
+                        .frame(width: UIScreen.main.bounds.width - 50, height: 80, alignment: .center)
+                     
                         Text("Choose Difficulty")
+                            .foregroundColor(.black)
                             .frame(width: UIScreen.main.bounds.width - 50, height: 45, alignment: .center)
                             .padding(.top, 0)
                             .background(.white)
+                            
                         
                     }
                     .padding(.bottom, 80)
@@ -41,15 +49,21 @@ struct PracticeView: View {
                         Picker("Choose Mode", selection: $mode) {
                             ForEach(modes, id: \.self) {
                                 Text($0)
-                                    .font(.system(size: 19))
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 18))
+                                   
                             }
-                        }.padding(.top, 125)
-                            .pickerStyle(.wheel)
-                            .frame(width: UIScreen.main.bounds.width - 50, height: 80, alignment: .center)
+                        }
+                        .padding(.top, 125)
+                        .pickerStyle(.wheel)
+                        .frame(width: UIScreen.main.bounds.width - 50, height: 80, alignment: .center)
+                        .tint(.black)
                         Text("Choose Mode")
+                            .foregroundColor(.black)
                             .frame(width: UIScreen.main.bounds.width - 50, height: 45, alignment: .center)
                             .padding(.top, 30)
                             .background(.white)
+                            
                         
                     }
                     
@@ -61,24 +75,27 @@ struct PracticeView: View {
                                 .foregroundStyle(.black)
                                 .font(.system(size: 30))
                                 
-                        }.padding()
+                        }
+                        .padding()
                     }
                     
                 }
                 
             }
-            .frame(width: UIScreen.main.bounds.width - 50, alignment: .center)
+            .navigationBarTitleDisplayMode(.inline)
+                .toolbar(content: {
+                           ToolbarItem(placement: .navigationBarTrailing) {
+                               Button {
+                       
+                               } label: {
+                                   Image(systemName: "line.3.horizontal")
+                                       .foregroundStyle(.black)
+                               }.buttonStyle(.plain)
+                               
+                           }
+                })
+            .frame(width: UIScreen.main.bounds.width, alignment: .center)
             .background(.white)
-//            .navigationBarBackButtonHidden(true)
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                               Button(action: {
-//                                   
-//                               }) {
-//                                   Label("Back", systemImage: "arrow.left.circle")
-//                               }
-//                }
-//            }
         
        
  

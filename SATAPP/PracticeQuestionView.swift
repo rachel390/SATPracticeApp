@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PracticeQuestionView: View {
+    
+    @State var formulaSheetVisible: Bool = false
+    
     var body: some View {
         ZStack {
             VStack {
@@ -42,20 +45,34 @@ struct PracticeQuestionView: View {
             VStack {
                 HStack {
                     Spacer()
-                    ZStack {
-                        Image(systemName: "chevron.backward")
-                            .padding(.trailing, 50)
-                        Image(systemName: "doc")
-                            .font(.system(size: 25))
-                    }.frame(width: 20, height: 50, alignment: .trailing)
+                    Button {
+                        withAnimation(.easeInOut(duration: 2)) {
+                                            formulaSheetVisible.toggle()
+                                        }
+                    } label: {
+                        ZStack {
+                            Image(systemName: "chevron.backward")
+                                .padding(.trailing, 50)
+                            Image(systemName: "doc")
+                                .font(.system(size: 25))
+                        }
+                        .frame(width: 20, height: 50, alignment: .trailing)
+                    }.buttonStyle(.plain)
+                    
                     
                 }
                 .padding(.top, 70)
            
                 Spacer()
             }
+//            if (formulaSheetVisible) {
+//                VStack {
+//                    Text("hi")
+//                }
+//            }
            
         }
+//        .offset(x: formulaSheetVisible ? 150 : 0, y: 0)
     }
 }
 

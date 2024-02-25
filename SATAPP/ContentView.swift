@@ -52,15 +52,14 @@ struct ContentView: View {
                     Spacer()
                 }.zIndex(1)
                 /*
-                 nav bar
-                 */
-                
-                /*
                  side menu
                  */
                 if (isShowing) {
                     HomeSideMenu(presentSideMenu: $isShowing).zIndex(2)
                 }
+                /*
+                 nav bar
+                 */
             }.navigationBarTitleDisplayMode(.inline)
                 .toolbar(content: {
                            ToolbarItem(placement: .navigationBarTrailing) {

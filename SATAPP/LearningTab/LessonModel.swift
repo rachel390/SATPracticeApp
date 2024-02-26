@@ -12,6 +12,8 @@ class LessonModel: ObservableObject {
     @Published var lessons = [Lesson]()
     @Published var lessonIndices = [String: Int]()
     @Published var showingSubtopics = [String: Bool]()
+    @Published var subtopics = [Subtopic]()
+    @Published var subtopicIndices = [String: Int]()
     
         
     init(){

@@ -24,6 +24,8 @@
 		ADE4B8DF2B4C802B00E1266B /* HomeSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4B8DE2B4C802B00E1266B /* HomeSideMenu.swift */; };
 		ADE4B8E12B4CA86400E1266B /* PracticeQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE4B8E02B4CA86400E1266B /* PracticeQuestionView.swift */; };
 		ADFAD0C62B8AE6F900A28998 /* LessonTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAD0C52B8AE6F900A28998 /* LessonTopic.swift */; };
+		ADFAD0C82B8C14DE00A28998 /* subtopicData.json in Resources */ = {isa = PBXBuildFile; fileRef = ADFAD0C72B8C14DE00A28998 /* subtopicData.json */; };
+		ADFAD0CA2B8C154D00A28998 /* Subtopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFAD0C92B8C154D00A28998 /* Subtopic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		ADE4B8DE2B4C802B00E1266B /* HomeSideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSideMenu.swift; sourceTree = "<group>"; };
 		ADE4B8E02B4CA86400E1266B /* PracticeQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeQuestionView.swift; sourceTree = "<group>"; };
 		ADFAD0C52B8AE6F900A28998 /* LessonTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTopic.swift; sourceTree = "<group>"; };
+		ADFAD0C72B8C14DE00A28998 /* subtopicData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = subtopicData.json; sourceTree = "<group>"; };
+		ADFAD0C92B8C154D00A28998 /* Subtopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subtopic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,8 +161,10 @@
 			isa = PBXGroup;
 			children = (
 				ADE2B0002B844B81004F49E4 /* lessonData.json */,
+				ADFAD0C72B8C14DE00A28998 /* subtopicData.json */,
 				AD7386062B8434C3005851C7 /* LearningLanding.swift */,
 				AD81C54A2B844CC5003A8B39 /* Lesson.swift */,
+				ADFAD0C92B8C154D00A28998 /* Subtopic.swift */,
 				ADFAD0C52B8AE6F900A28998 /* LessonTopic.swift */,
 				AD81C54C2B844D2D003A8B39 /* LessonModel.swift */,
 			);
@@ -269,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADFAD0C82B8C14DE00A28998 /* subtopicData.json in Resources */,
 				ADE2B0012B844B81004F49E4 /* lessonData.json in Resources */,
 				AD43B1082B4B5966006E6380 /* Preview Assets.xcassets in Resources */,
 				AD43B1052B4B5966006E6380 /* Assets.xcassets in Resources */,
@@ -306,6 +313,7 @@
 				AD7386072B8434C3005851C7 /* LearningLanding.swift in Sources */,
 				AD81C54D2B844D2D003A8B39 /* LessonModel.swift in Sources */,
 				ADE4B8E12B4CA86400E1266B /* PracticeQuestionView.swift in Sources */,
+				ADFAD0CA2B8C154D00A28998 /* Subtopic.swift in Sources */,
 				AD43B1012B4B5964006E6380 /* SATAPPApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

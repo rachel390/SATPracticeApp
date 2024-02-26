@@ -11,7 +11,7 @@ import SwiftUI
 
 struct LearningLanding: View {
     @ObservedObject var datas = LessonModel()
-    private let c = 5
+    private let c = 4
     @State private var isShowing = false
     @State private var showSubtopics = false
     @State private var page = 0
